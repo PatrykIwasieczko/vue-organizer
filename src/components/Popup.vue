@@ -8,6 +8,7 @@
       <v-form class="px-3">
         <v-text-field label="Title" v-model="title" prepend-icon="folder"></v-text-field>
         <v-textarea label="Information" v-model="content" prepend-icon="edit"></v-textarea>
+
         <v-btn flat class="success mx-0 mt-3" @click="submit">Add project</v-btn>
       </v-form>
     </v-card>
@@ -15,11 +16,13 @@
 </template>
 
 <script>
+import format from "date-fns/format";
 export default {
   data() {
     return {
       title: "",
-      content: ""
+      content: "",
+      due: null
     };
   },
   methods: {
