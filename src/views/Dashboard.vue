@@ -18,8 +18,12 @@
             <div>{{ project.due }}</div>
           </v-flex>
           <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">Status</div>
-            <div>{{ project.status }}</div>
+            <div class="right">
+              <v-chip
+                small
+                :class="`${project.status} white--text caption my-2`"
+              >{{ project.status }}</v-chip>
+            </div>
           </v-flex>
         </v-layout>
       </v-card>
@@ -86,9 +90,21 @@ export default {
   border-left: 4px solid #3cd1c2;
 }
 .project.to-do {
-  border-left: 4px solid orange;
+  border-left: 4px solid #ffaa2c;
 }
 .project.urgent {
   border-left: 4px solid tomato;
+}
+.v-chip.complete {
+  background: #32cd32;
+}
+.v-chip.ongoing {
+  background: #3cd1c2;
+}
+.v-chip.to-do {
+  background: #ffaa2c;
+}
+.v-chip.urgent {
+  background: #f83e70;
 }
 </style>
