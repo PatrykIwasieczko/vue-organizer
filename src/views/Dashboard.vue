@@ -2,12 +2,13 @@
   <div class="dashboard">
     <h1 class="subheading grey--text">Dashboard</h1>
     <v-container class="my-5">
-      <v-card flat class="pa-3" v-for="project in projects" :key="project.title">
-        <v-layout row wrap>
+      <v-card flat v-for="project in projects" :key="project.title">
+        <v-layout row wrap :class="`pa-3 project ${project.status}`">
           <v-flex xs12 md6>
             <div class="caption grey--text">Project title</div>
             <div>{{ project.title }}</div>
           </v-flex>
+
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Person</div>
             <div>{{ project.person }}</div>
@@ -59,12 +60,35 @@ export default {
           title: "Hire new members to our developers team",
           person: "John Doe",
           due: "1st Jan 2020",
-          status: "to do",
+          status: "to-do",
           content:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla rem perferendis atque odit autem repudiandae debitis molestias quasi eaque, error nemo optio non quis explicabo accusantium distinctio consequatur, commodi amet?"
+        },
+        {
+          title: "Fix the bugs in our app",
+          person: "Brian Doe",
+          due: "10th Aug 2019",
+          status: "urgent",
+          content:
+            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere molestiae et rerum sit aperiam? Laboriosam magnam saepe molestiae nemo distinctio. Necessitatibus sit consequuntur aperiam voluptas libero sapiente voluptatibus culpa consequatur."
         }
       ]
     };
   }
 };
 </script>
+
+<style>
+.project.complete {
+  border-left: 4px solid #32cd32;
+}
+.project.ongoing {
+  border-left: 4px solid #3cd1c2;
+}
+.project.to-do {
+  border-left: 4px solid orange;
+}
+.project.urgent {
+  border-left: 4px solid tomato;
+}
+</style>
