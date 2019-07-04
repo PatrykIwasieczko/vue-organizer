@@ -13,9 +13,10 @@
           <v-text-field
             :value="formattedDate"
             slot="activator"
+            clearable
             label="Due date"
             prepend-icon="date_range"
-            :rules="dateRules"
+            :rules="inputRules"
           ></v-text-field>
           <v-date-picker v-model="due"></v-date-picker>
         </v-menu>
@@ -37,8 +38,10 @@ export default {
       title: "",
       content: "",
       due: null,
-      inputRules: [v => v.length >= 5 || "Minimum length is 5 characters"],
-      dateRules: [v => v.length > 0 || "You need to choose a date"],
+      inputRules: [
+        v => !!v || "This field is required",
+        v => v.length >= 5 || "Minimum length is 5 characters"
+      ],
       loading: false,
       dialog: false
     };
