@@ -18,6 +18,14 @@
           </v-btn>
           <span>Sort projects by person name</span>
         </v-tooltip>
+
+        <v-tooltip top>
+          <v-btn small flat color="grey" @click="sortByDate('due')" slot="activator">
+            <v-icon left small>date_range</v-icon>
+            <span class="caption text-lowercase">Sort by due date</span>
+          </v-btn>
+          <span>Sort projects by due date</span>
+        </v-tooltip>
       </v-layout>
 
       <v-card flat v-for="project in projects" :key="project.title">
@@ -60,6 +68,11 @@ export default {
   methods: {
     sortBy(prop) {
       this.projects.sort((a, b) => (a[prop] - b[prop] ? -1 : 1));
+    },
+    sortByDate(prop) {
+      this.projects.sort((a, b) =>
+        Date.parse(a[prop]) < Date.parse(b[prop]) ? -1 : 1
+      );
     }
   },
   created() {

@@ -69,7 +69,7 @@ export default {
   },
   computed: {
     formattedDate() {
-      return this.due ? format(this.due, "Do MMM YYYY") : "";
+      return this.due ? format(this.due, "YYYY-MM-DD") : "";
     }
   }
 };
