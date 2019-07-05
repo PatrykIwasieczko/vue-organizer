@@ -9,8 +9,11 @@
               <v-text-field label="Email"></v-text-field>
               <v-text-field label="Password"></v-text-field>
             </v-form>
-            <v-btn flat class="success mx-0 my-4">Login</v-btn>
-            <p>You don't have an account? You can create one</p>
+            <v-btn flat class="success mx-0 my-4" @click="login">Login</v-btn>
+            <p>
+              You don't have an account? You can
+              <router-link to="/signup">create one</router-link>
+            </p>
           </v-card>
         </v-flex>
       </v-layout>
@@ -23,7 +26,11 @@ export default {
   data() {
     return {};
   },
-  methods: {}
+  methods: {
+    login: function() {
+      this.$router.replace("/");
+    }
+  }
 };
 </script>
 <style>
