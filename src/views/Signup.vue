@@ -7,7 +7,7 @@
             <h3>Create a new account</h3>
             <v-form>
               <v-text-field label="Email" v-model="email"></v-text-field>
-              <v-text-field label="Password" v-model="password"></v-text-field>
+              <v-text-field label="Password" v-model="password" type="password"></v-text-field>
             </v-form>
             <v-btn flat class="success mx-0 my-4" @click="signup">Sign Up</v-btn>
             <v-spacer></v-spacer>
