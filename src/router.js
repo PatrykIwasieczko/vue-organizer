@@ -13,19 +13,36 @@ export default new Router({
     base: process.env.BASE_URL,
     routes: [
         {
+            path: "*",
+            redirect: "/login"
+        },
+        {
             path: "/",
+            redirect: "/login"
+        },
+        {
+            path: "/home",
             name: "dashboard",
-            component: Dashboard
+            component: Dashboard,
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             path: "/projects",
             name: "projects",
-            component: Projects
+            component: Projects,
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             path: "/team",
             name: "team",
-            component: Team
+            component: Team,
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             path: "/login",

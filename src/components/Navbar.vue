@@ -67,7 +67,7 @@ export default {
     return {
       drawer: false,
       links: [
-        { icon: "dashboard", text: "Dashboard", route: "/" },
+        { icon: "dashboard", text: "Dashboard", route: "/home" },
         { icon: "folder", text: "My projects", route: "/projects" },
         { icon: "person", text: "Team", route: "/team" }
       ],
