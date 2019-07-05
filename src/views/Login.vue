@@ -6,8 +6,8 @@
           <v-card class="pa-5">
             <h3>Sign In</h3>
             <v-form>
-              <v-text-field label="Email"></v-text-field>
-              <v-text-field label="Password"></v-text-field>
+              <v-text-field label="Email" v-model="email"></v-text-field>
+              <v-text-field label="Password" v-model="password"></v-text-field>
             </v-form>
             <v-btn flat class="success mx-0 my-4" @click="login">Login</v-btn>
             <p>
@@ -21,14 +21,28 @@
   </div>
 </template>
 <script>
+import firebase from "firebase";
 export default {
   name: "login",
   data() {
-    return {};
+    return {
+      email: "",
+      password: ""
+    };
   },
   methods: {
     login: function() {
-      this.$router.replace("/");
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(
+          function(user) {
+            alert("Well done! You are now logged in");
+          },
+          function(err) {
+            alert("Oops. " + err.message);
+          }
+        );
     }
   }
 };
