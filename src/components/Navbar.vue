@@ -26,7 +26,7 @@
         </v-list>
       </v-menu>
 
-      <v-btn flat color="grey">
+      <v-btn flat color="grey" @click="logout">
         <span>Sign Out</span>
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
@@ -61,6 +61,7 @@
 
 <script>
 import Popup from "./Popup";
+import firebase from "firebase";
 export default {
   components: { Popup },
   data() {
@@ -73,6 +74,17 @@ export default {
       ],
       snackbar: false
     };
+  },
+  methods: {
+    logout: function() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.replace("login");
+          alert("You have logged out");
+        });
+    }
   }
 };
 </script>
