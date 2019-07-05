@@ -48,12 +48,14 @@ const router = new Router({
         {
             path: "/login",
             name: "login",
-            component: Login
+            component: Login,
+            meta: { hideNavigation: true }
         },
         {
             path: "/signup",
             name: "signup",
-            component: Signup
+            component: Signup,
+            meta: { hideNavigation: true }
         }
     ]
 });
