@@ -37,10 +37,11 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(
-          function() {
+          user => {
+            this.$router.replace("home");
             alert("Your account has been created");
           },
-          function(err) {
+          err => {
             alert("Oops." + err.message);
           }
         );

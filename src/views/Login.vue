@@ -40,7 +40,7 @@ export default {
             this.$router.replace("home");
             alert("Well done! You are now logged in");
           },
-          function(err) {
+          err => {
             alert("Oops. " + err.message);
           }
         );
