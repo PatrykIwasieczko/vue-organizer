@@ -36,7 +36,8 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
-          function(user) {
+          user => {
+            this.$router.replace("home");
             alert("Well done! You are now logged in");
           },
           function(err) {
