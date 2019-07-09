@@ -26,6 +26,7 @@ export default {
   name: "login",
   data() {
     return {
+      name: "",
       email: "",
       password: ""
     };
@@ -38,7 +39,6 @@ export default {
         .then(
           user => {
             this.$router.replace("home");
-            alert("Well done! You are now logged in");
           },
           err => {
             alert("Oops. " + err.message);

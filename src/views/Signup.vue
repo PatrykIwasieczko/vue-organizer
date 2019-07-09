@@ -6,6 +6,7 @@
           <v-card class="pa-5">
             <h3>Create a new account</h3>
             <v-form>
+              <v-text-field label="Full name" v-model="name"></v-text-field>
               <v-text-field label="Email" v-model="email"></v-text-field>
               <v-text-field label="Password" v-model="password" type="password"></v-text-field>
             </v-form>
@@ -23,12 +24,14 @@
 </template>
 <script>
 import firebase from "firebase";
+import db from "@/fb";
 export default {
   name: "signup",
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      name: ""
     };
   },
   methods: {
@@ -36,10 +39,17 @@ export default {
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
+        .then(cred => {
+          return db
+            .collection("users")
+            .doc(cred.user.uid)
+            .set({
+              name: this.name
+            });
+        })
         .then(
           user => {
             this.$router.replace("home");
-            alert("Your account has been created");
           },
           err => {
             alert("Oops." + err.message);
