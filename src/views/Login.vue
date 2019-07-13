@@ -7,7 +7,12 @@
             <h3>Sign In</h3>
             <v-form>
               <v-text-field label="Email" v-model="email"></v-text-field>
-              <v-text-field label="Password" v-model="password" type="password"></v-text-field>
+              <v-text-field
+                label="Password"
+                @keyup.enter="login"
+                v-model="password"
+                type="password"
+              ></v-text-field>
             </v-form>
             <v-btn flat class="success mx-0 my-4" @click="login">Login</v-btn>
             <p>

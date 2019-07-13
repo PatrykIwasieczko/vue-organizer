@@ -66,6 +66,7 @@ export default {
   components: { Popup },
   data() {
     return {
+      user: "",
       drawer: false,
       links: [
         { icon: "dashboard", text: "Dashboard", route: "/home" },
