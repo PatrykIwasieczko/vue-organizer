@@ -26,7 +26,7 @@
   </div>
 </template>
 <script>
-import firebase from "firebase";
+import { fb } from "../firebase";
 export default {
   name: "login",
   data() {
@@ -38,8 +38,7 @@ export default {
   },
   methods: {
     login: function() {
-      firebase
-        .auth()
+      fb.auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
           user => {

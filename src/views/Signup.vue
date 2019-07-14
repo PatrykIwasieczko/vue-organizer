@@ -28,8 +28,8 @@
   </div>
 </template>
 <script>
-import firebase from "firebase";
-import db from "@/fb";
+import { fb } from "../firebase";
+import { db } from "../firebase";
 export default {
   name: "signup",
   data() {
@@ -41,8 +41,7 @@ export default {
   },
   methods: {
     signup: function() {
-      firebase
-        .auth()
+      fb.auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(cred => {
           return db

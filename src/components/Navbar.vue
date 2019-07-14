@@ -61,7 +61,7 @@
 
 <script>
 import Popup from "./Popup";
-import firebase from "firebase";
+import { fb } from "../firebase";
 export default {
   components: { Popup },
   data() {
@@ -79,8 +79,7 @@ export default {
   },
   methods: {
     logout: function() {
-      firebase
-        .auth()
+      fb.auth()
         .signOut()
         .then(() => {
           this.$router.replace("login");

@@ -6,7 +6,7 @@ import Team from "./views/Team.vue";
 import Login from "./views/Login.vue";
 import Signup from "./views/Signup.vue";
 import Profile from "./views/Profile.vue";
-import firebase from "firebase";
+import { fb } from "./firebase";
 
 Vue.use(Router);
 
@@ -70,7 +70,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-    const currentUser = firebase.auth().currentUser;
+    const currentUser = fb.auth().currentUser;
     const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
     if (requiresAuth && !currentUser) next("login");

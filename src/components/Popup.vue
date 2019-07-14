@@ -31,7 +31,7 @@
 
 <script>
 import format from "date-fns/format";
-import db from "@/fb";
+import { db } from "../firebase";
 export default {
   data() {
     return {

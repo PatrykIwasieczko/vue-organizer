@@ -1,5 +1,7 @@
-import firebase from "firebase/app";
+import firebase from "@firebase/app";
 import "firebase/firestore";
+import "firebase/firebase-auth";
+import "firebase/storage";
 
 // Initialize firebase
 var firebaseConfig = {
@@ -12,7 +14,8 @@ var firebaseConfig = {
     appId: "1:737054375284:web:a0b6642ac60ee3a2"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const fb = firebase.initializeApp(firebaseConfig);
+
 const db = firebase.firestore();
 
-export default db;
+export { fb, db };
