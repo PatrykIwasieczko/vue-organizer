@@ -71,7 +71,8 @@ export default {
       links: [
         { icon: "dashboard", text: "Dashboard", route: "/home" },
         { icon: "folder", text: "My projects", route: "/projects" },
-        { icon: "person", text: "Team", route: "/team" }
+        { icon: "group", text: "Team", route: "/team" },
+        { icon: "person", text: "Profile", route: "/profile" }
       ],
       snackbar: false
     };
