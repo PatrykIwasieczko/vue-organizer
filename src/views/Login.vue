@@ -40,14 +40,18 @@ export default {
     login: function() {
       fb.auth()
         .signInWithEmailAndPassword(this.email, this.password)
-        .then(
-          user => {
-            this.$router.replace("home");
-          },
-          err => {
-            alert("Oops. " + err.message);
-          }
-        );
+        .then(() => {
+          this.$router.replace("home");
+        })
+        .then(() => {
+          Toast.fire({
+            type: "success",
+            title: "You are now logged in."
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
 };

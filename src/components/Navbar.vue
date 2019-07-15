@@ -83,7 +83,15 @@ export default {
         .signOut()
         .then(() => {
           this.$router.replace("login");
-          alert("You have logged out");
+        })
+        .then(() => {
+          Toast.fire({
+            type: "success",
+            title: "You are now logged out."
+          });
+        })
+        .catch(error => {
+          console.log(error);
         });
     }
   }

@@ -51,14 +51,18 @@ export default {
               name: this.name
             });
         })
-        .then(
-          user => {
-            this.$router.replace("home");
-          },
-          err => {
-            alert("Oops." + err.message);
-          }
-        );
+        .then(() => {
+          this.$router.replace("home");
+        })
+        .then(() => {
+          Toast.fire({
+            type: "success",
+            title: "You have successfully created an account."
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
 };
