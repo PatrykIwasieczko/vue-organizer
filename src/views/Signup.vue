@@ -45,7 +45,7 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(cred => {
           return db
-            .collection("users")
+            .collection("profiles")
             .doc(cred.user.uid)
             .set({
               name: this.name

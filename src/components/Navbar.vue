@@ -38,7 +38,7 @@
           <v-avatar size="100">
             <img src="avatar-1.png" alt />
           </v-avatar>
-          <p class="white--text subheading mt-1">Patryk Iwasieczko</p>
+          <p class="white--text subheading mt-1">{{ profile.name }}</p>
         </v-flex>
         <v-flex class="mt-3">
           <Popup @projectAdded="snackbar = true" />
@@ -61,11 +61,17 @@
 
 <script>
 import Popup from "./Popup";
-import { fb } from "../firebase";
+import { fb, db } from "../firebase";
 export default {
   components: { Popup },
   data() {
     return {
+      profile: {
+        name: null,
+        phone: null,
+        address: null,
+        postcode: null
+      },
       user: "",
       drawer: false,
       links: [
@@ -75,6 +81,13 @@ export default {
         { icon: "person", text: "Profile", route: "/profile" }
       ],
       snackbar: false
+    };
+  },
+
+  firestore() {
+    const user = fb.auth().currentUser;
+    return {
+      profile: db.collection("profiles").doc(user.uid)
     };
   },
   methods: {
