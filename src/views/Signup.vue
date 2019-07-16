@@ -28,8 +28,7 @@
   </div>
 </template>
 <script>
-import { fb } from "../firebase";
-import { db } from "../firebase";
+import { fb, db } from "../firebase";
 export default {
   name: "signup",
   data() {
@@ -48,7 +47,8 @@ export default {
             .collection("profiles")
             .doc(cred.user.uid)
             .set({
-              name: this.name
+              name: this.name,
+              email: this.email
             });
         })
         .then(() => {
