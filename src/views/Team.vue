@@ -13,7 +13,8 @@
             </v-responsive>
             <v-card-text>
               <div class="subheading">{{ person.name }}</div>
-              <div class="grey--text">{{ person.role }}</div>
+              <div class="grey--text">{{ person.phone }}</div>
+              <div class="grey--text">{{ person.email }}</div>
             </v-card-text>
             <v-card-actions>
               <v-btn flat color="grey">
@@ -29,29 +30,26 @@
 </template>
 
 <script>
+import { db } from "../firebase";
 export default {
   data() {
     return {
-      team: [
-        {
-          name: "Patryk Iwasieczko",
-          role: "Web Developer",
-          avatar: "/avatar-1.png"
-        },
-        { name: "John Doe", role: "Recruiter", avatar: "/avatar-2.png" },
-        { name: "Brian Doe", role: "Tester", avatar: "/avatar-3.png" },
-        {
-          name: "Jane Gray",
-          role: "Backend Developer",
-          avatar: "/avatar-4.png"
-        },
-        {
-          name: "Jerry Smith",
-          role: "Advertising Agent",
-          avatar: "/avatar-5.png"
-        }
-      ]
+      team: []
     };
+  },
+  created() {
+    db.collection("profiles").onSnapshot(res => {
+      const changes = res.docChanges();
+
+      changes.forEach(change => {
+        if (change.type === "added") {
+          this.team.push({
+            ...change.doc.data(),
+            id: change.doc.id
+          });
+        }
+      });
+    });
   }
 };
 </script>
