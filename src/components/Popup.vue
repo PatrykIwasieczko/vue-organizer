@@ -64,7 +64,7 @@ export default {
         const project = {
           title: this.title,
           content: this.content,
-          due: format(this.due, "Do MMM YYYY"),
+          due: format(this.due, "YYYY-MM-DD"),
           person: this.profile.name,
           status: this.chosenStatus
         };
