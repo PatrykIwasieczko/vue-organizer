@@ -8,7 +8,12 @@
       <v-form class="px-3" ref="form">
         <v-text-field label="Title" v-model="title" prepend-icon="folder" :rules="inputRules"></v-text-field>
         <v-textarea label="Information" v-model="content" prepend-icon="edit" :rules="inputRules"></v-textarea>
-        <v-select :items="status" v-model="chosenStatus" prepend-icon="edit" label="Status"></v-select>
+        <v-select
+          :items="status"
+          v-model="chosenStatus"
+          prepend-icon="notifications"
+          label="Status"
+        ></v-select>
 
         <v-menu>
           <v-text-field
