@@ -8,6 +8,7 @@
       <v-form class="px-3" ref="form">
         <v-text-field label="Title" v-model="title" prepend-icon="folder" :rules="inputRules"></v-text-field>
         <v-textarea label="Information" v-model="content" prepend-icon="edit" :rules="inputRules"></v-textarea>
+        <v-select :items="status" v-model="chosenStatus" prepend-icon="edit" label="Status"></v-select>
 
         <v-menu>
           <v-text-field
@@ -38,6 +39,8 @@ export default {
       profile: {
         name: null
       },
+      status: ["to-do", "urgent", "ongoing", "done"],
+      chosenStatus: "",
       title: "",
       content: "",
       due: null,
@@ -58,7 +61,7 @@ export default {
           content: this.content,
           due: format(this.due, "Do MMM YYYY"),
           person: this.profile.name,
-          status: "ongoing"
+          status: this.chosenStatus
         };
         db.collection("projects")
           .add(project)
