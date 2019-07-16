@@ -31,10 +31,13 @@
 
 <script>
 import format from "date-fns/format";
-import { db } from "../firebase";
+import { fb, db } from "../firebase";
 export default {
   data() {
     return {
+      profile: {
+        name: null
+      },
       title: "",
       content: "",
       due: null,
@@ -54,7 +57,7 @@ export default {
           title: this.title,
           content: this.content,
           due: format(this.due, "Do MMM YYYY"),
-          person: "Patryk Iwasieczko",
+          person: this.profile.name,
           status: "ongoing"
         };
         db.collection("projects")
@@ -71,6 +74,12 @@ export default {
     formattedDate() {
       return this.due ? format(this.due, "YYYY-MM-DD") : "";
     }
+  },
+  firestore() {
+    const user = fb.auth().currentUser;
+    return {
+      profile: db.collection("profiles").doc(user.uid)
+    };
   }
 };
 </script>
