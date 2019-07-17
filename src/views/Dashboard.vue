@@ -93,7 +93,7 @@ export default {
 </script>
 
 <style>
-.project.complete {
+.project.done {
   border-left: 4px solid #32cd32;
 }
 .project.ongoing {
@@ -105,7 +105,7 @@ export default {
 .project.urgent {
   border-left: 4px solid tomato;
 }
-.v-chip.complete {
+.v-chip.done {
   background: #32cd32;
 }
 .v-chip.ongoing {
