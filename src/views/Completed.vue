@@ -28,7 +28,7 @@ export default {
   computed: {
     myProjects() {
       return this.projects.filter(project => {
-        return project.person === "Patryk Iwasieczko";
+        return project.status === "done";
       });
     }
   },
