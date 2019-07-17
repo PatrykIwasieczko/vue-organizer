@@ -32,7 +32,7 @@
         <v-layout row wrap :class="`pa-3 project ${project.status}`">
           <v-flex xs12 md6>
             <div class="caption grey--text">Project title</div>
-            <div>{{ project.title }}</div>
+            <router-link v-bind:to="'/project/' + project.id">{{ project.title }}</router-link>
           </v-flex>
 
           <v-flex xs6 sm4 md2>

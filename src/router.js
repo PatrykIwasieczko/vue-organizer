@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Dashboard from "./views/Dashboard.vue";
 import Projects from "./views/Projects.vue";
+import ProjectDetails from "./views/ProjectDetails.vue";
 import Team from "./views/Team.vue";
 import Login from "./views/Login.vue";
 import Signup from "./views/Signup.vue";
@@ -34,6 +35,14 @@ const router = new Router({
             path: "/projects",
             name: "projects",
             component: Projects,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: "/project/:id",
+            name: "project",
+            component: ProjectDetails,
             meta: {
                 requiresAuth: true
             }
