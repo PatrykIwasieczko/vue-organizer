@@ -28,7 +28,7 @@
         </v-tooltip>
       </v-layout>
 
-      <v-card flat v-for="project in projects" :key="project.title">
+      <v-card flat v-for="project in myProjects" :key="project.title">
         <v-layout row wrap :class="`pa-3 project ${project.status}`">
           <v-flex xs12 md6>
             <div class="caption grey--text">Project title</div>
@@ -73,6 +73,14 @@ export default {
       this.projects.sort((a, b) =>
         Date.parse(a[prop]) < Date.parse(b[prop]) ? -1 : 1
       );
+    }
+  },
+
+  computed: {
+    myProjects() {
+      return this.projects.filter(project => {
+        return project.status !== "done";
+      });
     }
   },
   created() {
