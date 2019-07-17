@@ -67,12 +67,8 @@ export default {
   data() {
     return {
       profile: {
-        name: null,
-        phone: null,
-        address: null,
-        postcode: null
+        name: null
       },
-      user: "",
       drawer: false,
       links: [
         { icon: "dashboard", text: "Dashboard", route: "/home" },
