@@ -3,31 +3,34 @@
     <h1 class="subheading grey--text">Dashboard</h1>
     <v-container class="my-5">
       <v-layout row class="mb-3">
-        <v-tooltip top>
-          <v-btn small flat color="grey" @click="sortBy('title')" slot="activator">
-            <v-icon left small>folder</v-icon>
-            <span class="caption text-lowercase">Sort by project name</span>
-          </v-btn>
-          <span>Sort projects by project name</span>
-        </v-tooltip>
+        <v-flex xs12>
+          <v-tooltip top>
+            <v-btn small flat color="grey" @click="sortBy('title')" slot="activator">
+              <v-icon left small>folder</v-icon>
+              <span class="caption text-lowercase">Sort by project name</span>
+            </v-btn>
+            <span>Sort projects by project name</span>
+          </v-tooltip>
 
-        <v-tooltip top>
-          <v-btn small flat color="grey" @click="sortBy('person')" slot="activator">
-            <v-icon left small>person</v-icon>
-            <span class="caption text-lowercase">Sort by person name</span>
-          </v-btn>
-          <span>Sort projects by person name</span>
-        </v-tooltip>
+          <v-tooltip top>
+            <v-btn small flat color="grey" @click="sortBy('person')" slot="activator">
+              <v-icon left small>person</v-icon>
+              <span class="caption text-lowercase">Sort by person name</span>
+            </v-btn>
+            <span>Sort projects by person name</span>
+          </v-tooltip>
 
-        <v-tooltip top>
-          <v-btn small flat color="grey" @click="sortByDate('due')" slot="activator">
-            <v-icon left small>date_range</v-icon>
-            <span class="caption text-lowercase">Sort by due date</span>
-          </v-btn>
-          <span>Sort projects by due date</span>
-        </v-tooltip>
-
-        <input type="text" v-model="search" placeholder="Search projects" />
+          <v-tooltip top>
+            <v-btn small flat color="grey" @click="sortByDate('due')" slot="activator">
+              <v-icon left small>date_range</v-icon>
+              <span class="caption text-lowercase">Sort by due date</span>
+            </v-btn>
+            <span>Sort projects by due date</span>
+          </v-tooltip>
+        </v-flex>
+        <v-flex md3 xs12>
+          <v-text-field prepend-icon="search" v-model="search" label="Search projects"></v-text-field>
+        </v-flex>
       </v-layout>
 
       <v-card flat v-for="project in foundProjects" :key="project.title">
@@ -61,7 +64,6 @@
 
 <script>
 import { db } from "../firebase";
-import searchMixin from "../mixins/searchMixin";
 export default {
   data() {
     return {
