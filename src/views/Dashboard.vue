@@ -26,9 +26,11 @@
           </v-btn>
           <span>Sort projects by due date</span>
         </v-tooltip>
+
+        <input type="text" v-model="search" placeholder="Search projects" />
       </v-layout>
 
-      <v-card flat v-for="project in myProjects" :key="project.title">
+      <v-card flat v-for="project in foundProjects" :key="project.title">
         <v-layout row wrap :class="`pa-3 project ${project.status}`">
           <v-flex xs12 md6>
             <div class="caption grey--text">Project title</div>
@@ -59,10 +61,12 @@
 
 <script>
 import { db } from "../firebase";
+import searchMixin from "../mixins/searchMixin";
 export default {
   data() {
     return {
-      projects: []
+      projects: [],
+      search: ""
     };
   },
   methods: {
@@ -77,10 +81,19 @@ export default {
   },
 
   computed: {
-    myProjects() {
-      return this.projects.filter(project => {
-        return project.status !== "done";
-      });
+    //filteredProjects() {
+    // return this.projects.filter(project => {
+    //return project.status !== "done";
+    //});
+    //},
+    foundProjects() {
+      return this.projects
+        .filter(project => {
+          return project.status !== "done";
+        })
+        .filter(project => {
+          return project.title.match(this.search);
+        });
     }
   },
   created() {
