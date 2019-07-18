@@ -61,7 +61,10 @@ export default {
           });
         })
         .catch(error => {
-          console.log(error);
+          Toast.fire({
+            type: "error",
+            title: error + ""
+          });
         });
     }
   }
