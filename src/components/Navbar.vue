@@ -1,10 +1,5 @@
 <template>
   <nav>
-    <v-snackbar v-model="snackbar" :timeout="4000" top color="success">
-      <span>You successfully added a new project!</span>
-      <v-btn flat color="white" @click="snackbar = false">Close</v-btn>
-    </v-snackbar>
-
     <v-toolbar app>
       <v-toolbar-side-icon class="grey--text" @click="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title class="text-uppercase grey--text">
@@ -80,8 +75,7 @@ export default {
         },
         { icon: "group", text: "Team", route: "/team" },
         { icon: "person", text: "Profile", route: "/profile" }
-      ],
-      snackbar: false
+      ]
     };
   },
 
