@@ -2,17 +2,25 @@
   <div class="projects">
     <h1 class="subheading grey--text">Projects</h1>
     <v-container class="my-5">
-      <v-expansion-panel>
-        <v-expansion-panel-content v-for="project in myProjects" :key="project.title">
-          <div slot="header">{{ project.title }}</div>
-          <v-card>
-            <v-card-text class="grey--text">
-              <div class="font-weight-bold">Due date: {{ project.due }}</div>
-              <div>{{ project.content }}</div>
-            </v-card-text>
-          </v-card>
-        </v-expansion-panel-content>
-      </v-expansion-panel>
+      <v-layout justify-center row wrap class="mb-3">
+        <v-flex xs12 sm5 md6 offset-md1>
+          <h1>Completed projects</h1>
+        </v-flex>
+        <v-flex xs12 sm5 md5>
+          <img src="/images/completed.svg" width="300" />
+        </v-flex>
+        <v-expansion-panel>
+          <v-expansion-panel-content v-for="project in myProjects" :key="project.title">
+            <div slot="header">{{ project.title }}</div>
+            <v-card>
+              <v-card-text class="grey--text">
+                <div class="font-weight-bold">Due date: {{ project.due }}</div>
+                <div>{{ project.content }}</div>
+              </v-card-text>
+            </v-card>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-layout>
     </v-container>
   </div>
 </template>

@@ -11,7 +11,7 @@
           <img src="/images/profile.svg" width="300" />
         </v-flex>
       </v-layout>
-      <v-layout ustify-center row>
+      <v-layout justify-center row>
         <v-flex>
           <v-tabs centered icons-and-text>
             <v-tabs-slider color="indigo"></v-tabs-slider>
