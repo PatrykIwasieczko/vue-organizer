@@ -33,14 +33,40 @@
 
             <v-tab-item>
               <v-card flat>
-                <v-card-text>Contents for Item 1 go here</v-card-text>
+                <v-layout justify-space-around row wrap class="pt-5">
+                  <v-flex xs12 md3>
+                    <v-text-field v-model="name" label="Name"></v-text-field>
+                  </v-flex>
+
+                  <v-flex xs12 md3>
+                    <v-text-field v-model="avatar" label="Avatar"></v-text-field>
+                  </v-flex>
+
+                  <v-flex xs12 md3>
+                    <v-btn flat class="success">Submit</v-btn>
+                  </v-flex>
+                </v-layout>
               </v-card>
             </v-tab-item>
+
             <v-tab-item>
               <v-card flat>
-                <v-card-text>Contents for Item 2 go here</v-card-text>
+                <v-layout justify-space-around row wrap class="pt-5">
+                  <v-flex xs12 md3>
+                    <v-text-field v-model="phone" label="Phone number"></v-text-field>
+                  </v-flex>
+
+                  <v-flex xs12 md3>
+                    <v-text-field v-model="email" label="Contact email"></v-text-field>
+                  </v-flex>
+
+                  <v-flex xs12 md3>
+                    <v-btn flat class="success">Submit</v-btn>
+                  </v-flex>
+                </v-layout>
               </v-card>
             </v-tab-item>
+
             <v-tab-item>
               <v-card flat>
                 <v-card-text>Contents for Item 3 go here</v-card-text>
