@@ -35,7 +35,7 @@
               <v-card flat>
                 <v-layout justify-space-around row wrap class="pt-5">
                   <v-flex xs12 md3>
-                    <v-text-field v-model="name" label="Name"></v-text-field>
+                    <v-text-field v-model="profile.name" label="Name"></v-text-field>
                   </v-flex>
 
                   <v-flex xs12 md3>
@@ -53,15 +53,15 @@
               <v-card flat>
                 <v-layout justify-space-around row wrap class="pt-5">
                   <v-flex xs12 md3>
-                    <v-text-field v-model="phone" label="Phone number"></v-text-field>
+                    <v-text-field v-model="profile.phone" label="Phone number"></v-text-field>
                   </v-flex>
 
                   <v-flex xs12 md3>
-                    <v-text-field v-model="email" label="Contact email"></v-text-field>
+                    <v-text-field v-model="profile.email" label="Contact email"></v-text-field>
                   </v-flex>
 
                   <v-flex xs12 md3>
-                    <v-btn flat class="success">Submit</v-btn>
+                    <v-btn flat class="success" @click="updateProfile">Submit</v-btn>
                   </v-flex>
                 </v-layout>
               </v-card>
@@ -80,10 +80,31 @@
 </template>
 
 <script>
+import { fb, db } from "../firebase";
 export default {
   data() {
-    return {};
+    return {
+      profile: {
+        name: null,
+        phone: null,
+        email: null
+      }
+    };
   },
-  computed: {}
+  firestore() {
+    const user = fb.auth().currentUser;
+    return {
+      profile: db.collection("profiles").doc(user.uid)
+    };
+  },
+  methods: {
+    updateProfile() {
+      this.$firestore.profile.update(this.profile);
+      Toast.fire({
+        type: "success",
+        title: "Profile updated"
+      });
+    }
+  }
 };
 </script>
