@@ -66,7 +66,8 @@ export default {
           content: this.content,
           due: format(this.due, "YYYY-MM-DD"),
           person: this.profile.name,
-          status: this.chosenStatus
+          status: this.chosenStatus,
+          contributors: [this.profile.name]
         };
         db.collection("projects")
           .add(project)

@@ -9,6 +9,8 @@
           <div>Status: {{ project.status }}</div>
           <div>Due date: {{ project.due }}</div>
           <div class="mt-3">{{ project.content }}</div>
+          <div class="mt-3">Doing: {{ project.contributors }}</div>
+          <v-btn dark color="blue" @click="contribute">Contribute</v-btn>
         </v-card-text>
       </v-card>
     </v-container>
@@ -16,19 +18,38 @@
 </template>
 
 <script>
-import { db } from "../firebase";
+import { db, fb } from "../firebase";
 export default {
   data() {
     return {
       id: this.$route.params.id,
-      project: []
+      project: {
+        content: null,
+        due: null,
+        person: null,
+        status: null,
+        title: null,
+        contributors: []
+      },
+      profile: {
+        name: null
+      }
     };
   },
 
   firestore() {
+    const user = fb.auth().currentUser;
     return {
+      profile: db.collection("profiles").doc(user.uid),
       project: db.collection("projects").doc(this.id)
     };
+  },
+  methods: {
+    contribute() {
+      this.project.contributors.indexOf(this.profile.name) === -1
+        ? this.project.contributors.push(this.profile.name)
+        : console.log("This item already exists");
+    }
   }
 };
 </script>
