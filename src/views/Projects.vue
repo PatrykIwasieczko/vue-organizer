@@ -18,20 +18,30 @@
 </template>
 
 <script>
-import { db } from "../firebase";
+import { db, fb } from "../firebase";
 export default {
   data() {
     return {
-      projects: []
+      projects: [],
+      profile: {
+        name: null
+      }
+    };
+  },
+  firestore() {
+    const user = fb.auth().currentUser;
+    return {
+      profile: db.collection("profiles").doc(user.uid)
     };
   },
   computed: {
     myProjects() {
       return this.projects.filter(project => {
-        return project.person === "Patryk Iwasieczko";
+        return project.person === this.profile.name;
       });
     }
   },
+
   created() {
     db.collection("projects").onSnapshot(res => {
       const changes = res.docChanges();
