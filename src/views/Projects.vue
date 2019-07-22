@@ -12,8 +12,8 @@
                 <v-list-tile-sub-title>{{ project.content }}</v-list-tile-sub-title>
               </v-list-tile-content>
               <v-list-tile-action>
-                <v-list-tile-action-text>{{ project.due }}</v-list-tile-action-text>
                 <EditProject />
+                <v-icon>delete</v-icon>
               </v-list-tile-action>
             </v-list-tile>
             <v-divider v-if="index + 1 < projects.length" :key="`divider-${index}`"></v-divider>
@@ -84,5 +84,8 @@ export default {
 }
 .project.urgent {
   border-left: 4px solid tomato;
+}
+.v-list__tile__action--stack {
+  flex-direction: row;
 }
 </style>
