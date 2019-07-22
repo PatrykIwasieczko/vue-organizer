@@ -27,6 +27,14 @@
             </v-btn>
             <span>Sort projects by due date</span>
           </v-tooltip>
+
+          <v-tooltip top>
+            <v-btn small flat color="grey" @click="sortByStatus" slot="activator">
+              <v-icon left small>edit</v-icon>
+              <span class="caption text-lowercase">Sort by status</span>
+            </v-btn>
+            <span>Sort projects by status</span>
+          </v-tooltip>
         </v-flex>
         <v-flex md3 xs12>
           <v-text-field prepend-icon="search" v-model="search" label="Search projects"></v-text-field>
@@ -79,6 +87,18 @@ export default {
       this.projects.sort((a, b) =>
         Date.parse(a[prop]) < Date.parse(b[prop]) ? -1 : 1
       );
+    },
+
+    sortByStatus() {
+      let ordering = {},
+        sortOrder = ["urgent", "to-do", "ongoing"];
+      for (let i = 0; i < sortOrder.length; i++) ordering[sortOrder[i]] = i;
+
+      this.projects.sort((a, b) => {
+        return (
+          ordering[a.status] - ordering[b.status] || a.due.localeCompare(b.due)
+        );
+      });
     }
   },
 
