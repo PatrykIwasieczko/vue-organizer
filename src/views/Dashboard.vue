@@ -30,7 +30,7 @@
 
           <v-tooltip top>
             <v-btn small flat color="grey" @click="sortByStatus" slot="activator">
-              <v-icon left small>edit</v-icon>
+              <v-icon left small>notifications</v-icon>
               <span class="caption text-lowercase">Sort by status</span>
             </v-btn>
             <span>Sort projects by status</span>
