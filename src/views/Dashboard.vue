@@ -103,11 +103,6 @@ export default {
   },
 
   computed: {
-    //filteredProjects() {
-    // return this.projects.filter(project => {
-    //return project.status !== "done";
-    //});
-    //},
     foundProjects() {
       return this.projects
         .filter(project => {
