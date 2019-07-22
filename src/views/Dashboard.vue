@@ -111,7 +111,7 @@ export default {
           return project.status !== "done";
         })
         .filter(project => {
-          return project.title.match(this.search);
+          return project.title.toLowerCase().match(this.search.toLowerCase());
         });
     }
   },
