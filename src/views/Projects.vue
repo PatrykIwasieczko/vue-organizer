@@ -13,7 +13,7 @@
               </v-list-tile-content>
               <v-list-tile-action>
                 <v-list-tile-action-text>{{ project.due }}</v-list-tile-action-text>
-                <v-icon color="grey lighten-1">edit</v-icon>
+                <EditProject />
               </v-list-tile-action>
             </v-list-tile>
             <v-divider v-if="index + 1 < projects.length" :key="`divider-${index}`"></v-divider>
@@ -26,7 +26,9 @@
 
 <script>
 import { db, fb } from "../firebase";
+import EditProject from "../components/EditProject";
 export default {
+  components: { EditProject },
   data() {
     return {
       projects: [],
