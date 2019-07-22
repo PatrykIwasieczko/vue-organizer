@@ -2,17 +2,24 @@
   <div class="projects">
     <h1 class="subheading grey--text">Projects</h1>
     <v-container class="my-5">
-      <v-expansion-panel>
-        <v-expansion-panel-content v-for="project in myProjects" :key="project.title">
-          <div slot="header">{{ project.title }}</div>
-          <v-card>
-            <v-card-text class="grey--text">
-              <div class="font-weight-bold">Due date: {{ project.due }}</div>
-              <div>{{ project.content }}</div>
-            </v-card-text>
-          </v-card>
-        </v-expansion-panel-content>
-      </v-expansion-panel>
+      <v-card>
+        <v-list two-line>
+          <template v-for="(project, index) in myProjects">
+            <v-list-tile :key="index" avatar ripple @click>
+              <v-list-tile-content>
+                <v-list-tile-title>{{ project.title }}</v-list-tile-title>
+                <v-list-tile-sub-title class="text--primary">Doing: {{ project.contributors }}</v-list-tile-sub-title>
+                <v-list-tile-sub-title>{{ project.content }}</v-list-tile-sub-title>
+              </v-list-tile-content>
+              <v-list-tile-action>
+                <v-list-tile-action-text>{{ project.due }}</v-list-tile-action-text>
+                <v-icon color="grey lighten-1">edit</v-icon>
+              </v-list-tile-action>
+            </v-list-tile>
+            <v-divider v-if="index + 1 < projects.length" :key="`divider-${index}`"></v-divider>
+          </template>
+        </v-list>
+      </v-card>
     </v-container>
   </div>
 </template>
@@ -58,3 +65,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.v-list {
+  padding: 0;
+}
+</style>
+
