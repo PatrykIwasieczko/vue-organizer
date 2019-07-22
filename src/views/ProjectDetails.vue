@@ -48,7 +48,10 @@ export default {
     contribute() {
       this.project.contributors.indexOf(this.profile.name) === -1
         ? this.project.contributors.push(this.profile.name)
-        : console.log("This item already exists");
+        : Toast.fire({
+            type: "error",
+            title: "You are already in the project"
+          });
     }
   }
 };
