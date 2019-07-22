@@ -13,7 +13,7 @@
               </v-list-tile-content>
               <v-list-tile-action>
                 <EditProject />
-                <v-icon>delete</v-icon>
+                <v-icon @click="deleteProject">delete</v-icon>
               </v-list-tile-action>
             </v-list-tile>
             <v-divider v-if="index + 1 < projects.length" :key="`divider-${index}`"></v-divider>
@@ -36,6 +36,19 @@ export default {
         name: null
       }
     };
+  },
+  methods: {
+    deleteProject() {
+      Swal.fire({
+        title: "Are you sure you want to delete this project?",
+        text: "You won't be able to revert this!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      });
+    }
   },
   firestore() {
     const user = fb.auth().currentUser;
