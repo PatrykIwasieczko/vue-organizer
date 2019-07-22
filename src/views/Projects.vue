@@ -5,7 +5,7 @@
       <v-card>
         <v-list two-line>
           <template v-for="(project, index) in myProjects">
-            <v-list-tile :key="index" avatar ripple @click>
+            <v-list-tile :key="index" avatar ripple @click :class="`project ${project.status}`">
               <v-list-tile-content>
                 <v-list-tile-title>{{ project.title }}</v-list-tile-title>
                 <v-list-tile-sub-title class="text--primary">Doing: {{ project.contributors }}</v-list-tile-sub-title>
@@ -72,5 +72,17 @@ export default {
 .v-list {
   padding: 0;
 }
-</style>
 
+.project.done {
+  border-left: 4px solid #32cd32;
+}
+.project.ongoing {
+  border-left: 4px solid #3cd1c2;
+}
+.project.to-do {
+  border-left: 4px solid #ffaa2c;
+}
+.project.urgent {
+  border-left: 4px solid tomato;
+}
+</style>
