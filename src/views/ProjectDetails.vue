@@ -4,8 +4,8 @@
     <v-container class="my-5">
       <v-card>
         <v-card-text>
-          <div class="font-weight-bold mb-3">{{ project.title }}</div>
-          <div>Created by: {{ project.person }}</div>
+          <h2 class="font-weight-bold mb-3">{{ project.title }}</h2>
+          <div class="font-weight-bold">Created by: {{ project.person }}</div>
           <div>Status: {{ project.status }}</div>
           <div>Due date: {{ project.due }}</div>
           <div class="mt-3">{{ project.content }}</div>
