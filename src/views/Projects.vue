@@ -13,7 +13,7 @@
               </v-list-tile-content>
               <v-list-tile-action>
                 <EditProject />
-                <v-icon @click="deleteProject">delete</v-icon>
+                <v-icon @click="deleteProject(project)">delete</v-icon>
               </v-list-tile-action>
             </v-list-tile>
             <v-divider v-if="index + 1 < projects.length" :key="`divider-${index}`"></v-divider>
@@ -38,7 +38,7 @@ export default {
     };
   },
   methods: {
-    deleteProject() {
+    deleteProject(doc) {
       Swal.fire({
         title: "Are you sure you want to delete this project?",
         text: "You won't be able to revert this!",
@@ -47,13 +47,22 @@ export default {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!"
+      }).then(result => {
+        if (result.value) {
+          this.$firestore.projects.doc(doc.id).delete();
+          Toast.fire({
+            type: "success",
+            title: "Project deleted  successfully"
+          });
+        }
       });
     }
   },
   firestore() {
     const user = fb.auth().currentUser;
     return {
-      profile: db.collection("profiles").doc(user.uid)
+      profile: db.collection("profiles").doc(user.uid),
+      projects: db.collection("projects")
     };
   },
   computed: {
@@ -62,21 +71,6 @@ export default {
         return project.person === this.profile.name;
       });
     }
-  },
-
-  created() {
-    db.collection("projects").onSnapshot(res => {
-      const changes = res.docChanges();
-
-      changes.forEach(change => {
-        if (change.type === "added") {
-          this.projects.push({
-            ...change.doc.data(),
-            id: change.doc.id
-          });
-        }
-      });
-    });
   }
 };
 </script>
