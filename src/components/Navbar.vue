@@ -36,7 +36,7 @@
           <p class="white--text subheading mt-1">{{ profile.name }}</p>
         </v-flex>
         <v-flex class="mt-3">
-          <Popup @projectAdded="snackbar = true" />
+          <Popup />
         </v-flex>
       </v-layout>
       <v-list>
