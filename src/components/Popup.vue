@@ -56,9 +56,9 @@ export default {
         name: null
       },
       project: {
-        chosenStatus: "",
-        title: "",
-        content: "",
+        chosenStatus: null,
+        title: null,
+        content: null,
         due: null,
         createdAt: Date.now()
       },
@@ -99,9 +99,9 @@ export default {
     },
     reset() {
       this.project = {
-        chosenStatus: "",
-        title: "",
-        content: "",
+        chosenStatus: null,
+        title: null,
+        content: null,
         due: null,
         createdAt: null
       };
