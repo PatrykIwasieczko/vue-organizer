@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <v-toolbar app>
+    <v-toolbar flat app>
       <v-toolbar-side-icon class="grey--text" @click="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title class="text-uppercase grey--text">
         <span class="font-weight-light">Orga</span>
