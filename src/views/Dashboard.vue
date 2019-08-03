@@ -116,8 +116,7 @@ export default {
     }
   },
   created() {
-    db.collection("projects")
-    .onSnapshot(res => {
+    db.collection("projects").onSnapshot(res => {
       const changes = res.docChanges();
 
       changes.forEach(change => {
@@ -134,9 +133,6 @@ export default {
 </script>
 
 <style>
-.project.done {
-  border-left: 4px solid #32cd32;
-}
 .project.ongoing {
   border-left: 4px solid #3cd1c2;
 }
@@ -146,9 +142,7 @@ export default {
 .project.urgent {
   border-left: 4px solid tomato;
 }
-.v-chip.done {
-  background: #32cd32;
-}
+
 .v-chip.ongoing {
   background: #3cd1c2;
 }
