@@ -69,7 +69,14 @@
 
             <v-tab-item>
               <v-card flat>
-                <v-card-text>Contents for Item 3 go here</v-card-text>
+                <v-layout justify-center row wrap class="pt-5">
+                  <v-flex xs6 md2>
+                    <v-btn class="info">Reset password</v-btn>
+                  </v-flex>
+                  <v-flex xs6 md2>
+                    <v-btn class="error">Delete account</v-btn>
+                  </v-flex>
+                </v-layout>
               </v-card>
             </v-tab-item>
           </v-tabs>
@@ -104,7 +111,8 @@ export default {
         type: "success",
         title: "Profile updated"
       });
-    }
+    },
+    
   }
 };
 </script>
