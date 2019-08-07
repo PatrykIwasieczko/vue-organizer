@@ -112,7 +112,23 @@ export default {
         title: "Profile updated"
       });
     },
-    
+    resetPassword() {
+      const auth = fb.auth();
+      auth
+        .sendPasswordResetEmail(auth.currentUser.email)
+        .then(() => {
+          Toast.fire({
+            type: "success",
+            title: "Email sent"
+          });
+        })
+        .catch(error => {
+          Toast.fire({
+            type: "error",
+            title: error + ""
+          });
+        });
+    }
   }
 };
 </script>
