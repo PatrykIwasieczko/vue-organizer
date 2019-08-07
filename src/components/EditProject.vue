@@ -1,6 +1,8 @@
 <template>
   <v-dialog max-width="600px" v-model="dialog">
-    <v-icon slot="activator">edit</v-icon>
+    <template v-slot:activator="{ on }">
+      <v-icon v-on="on">edit</v-icon>
+    </template>
     <v-card>
       <v-card-title>
         <h2>Add a new project</h2>

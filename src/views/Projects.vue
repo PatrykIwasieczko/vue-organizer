@@ -5,17 +5,17 @@
       <v-card>
         <v-list two-line>
           <template v-for="(project, index) in myProjects">
-            <v-list-tile :key="index" avatar ripple @click :class="`project ${project.status}`">
-              <v-list-tile-content>
-                <v-list-tile-title>{{ project.title }}</v-list-tile-title>
-                <v-list-tile-sub-title class="text--primary">Doing: {{ project.contributors }}</v-list-tile-sub-title>
-                <v-list-tile-sub-title>{{ project.content }}</v-list-tile-sub-title>
-              </v-list-tile-content>
-              <v-list-tile-action>
+            <v-list-item :key="index" ripple @click :class="`project ${project.status}`">
+              <v-list-item-content>
+                <v-list-item-title>{{ project.title }}</v-list-item-title>
+                <v-list-item-subtitle class="text--primary">Doing: {{ project.contributors }}</v-list-item-subtitle>
+                <v-list-item-subtitle>{{ project.content }}</v-list-item-subtitle>
+              </v-list-item-content>
+              <v-list-item-action>
                 <EditProject />
                 <v-icon @click="deleteProject(project)">delete</v-icon>
-              </v-list-tile-action>
-            </v-list-tile>
+              </v-list-item-action>
+            </v-list-item>
             <v-divider v-if="index + 1 < projects.length" :key="`divider-${index}`"></v-divider>
           </template>
         </v-list>
@@ -92,7 +92,7 @@ export default {
 .project.urgent {
   border-left: 4px solid tomato;
 }
-.v-list__tile__action--stack {
+.v-list__item__action--stack {
   flex-direction: row;
 }
 </style>
