@@ -39,7 +39,7 @@
                   </v-flex>
 
                   <v-flex xs12 md3>
-                    <v-text-field v-model="avatar" label="Avatar"></v-text-field>
+                    <v-file-input label="Profile picture" prepend-icon="camera_alt"></v-file-input>
                   </v-flex>
 
                   <v-flex xs12 md3>
