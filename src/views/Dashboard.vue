@@ -5,7 +5,7 @@
       <v-layout row class="mb-3">
         <v-flex xs12>
           <v-tooltip top>
-            <v-btn small flat color="grey" @click="sortBy('title')" slot="activator">
+            <v-btn small text color="grey" @click="sortBy('title')" slot="activator">
               <v-icon left small>folder</v-icon>
               <span class="caption text-lowercase">Sort by project name</span>
             </v-btn>
@@ -13,7 +13,7 @@
           </v-tooltip>
 
           <v-tooltip top>
-            <v-btn small flat color="grey" @click="sortBy('person')" slot="activator">
+            <v-btn small text color="grey" @click="sortBy('person')" slot="activator">
               <v-icon left small>person</v-icon>
               <span class="caption text-lowercase">Sort by person name</span>
             </v-btn>
@@ -21,7 +21,7 @@
           </v-tooltip>
 
           <v-tooltip top>
-            <v-btn small flat color="grey" @click="sortByDate('due')" slot="activator">
+            <v-btn small text color="grey" @click="sortByDate('due')" slot="activator">
               <v-icon left small>date_range</v-icon>
               <span class="caption text-lowercase">Sort by due date</span>
             </v-btn>
@@ -29,7 +29,7 @@
           </v-tooltip>
 
           <v-tooltip top>
-            <v-btn small flat color="grey" @click="sortByStatus" slot="activator">
+            <v-btn small text color="grey" @click="sortByStatus" slot="activator">
               <v-icon left small>notifications</v-icon>
               <span class="caption text-lowercase">Sort by status</span>
             </v-btn>

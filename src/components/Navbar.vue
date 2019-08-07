@@ -10,7 +10,7 @@
 
       <!-- dropdown menu -->
       <v-menu offset-y>
-        <v-btn flat slot="activator" color="grey">
+        <v-btn text slot="activator" color="grey">
           <v-icon left>expand_more</v-icon>
           <span>Menu</span>
         </v-btn>
@@ -21,7 +21,7 @@
         </v-list>
       </v-menu>
 
-      <v-btn flat color="grey" @click="logout">
+      <v-btn text color="grey" @click="logout">
         <span>Sign Out</span>
         <v-icon right>exit_to_app</v-icon>
       </v-btn>

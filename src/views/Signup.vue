@@ -15,7 +15,7 @@
                 type="password"
               ></v-text-field>
             </v-form>
-            <v-btn flat class="success mx-0 my-4" @click="signup">Sign Up</v-btn>
+            <v-btn text class="success mx-0 my-4" @click="signup">Sign Up</v-btn>
             <v-spacer></v-spacer>
             <span>
               If you already have an account -

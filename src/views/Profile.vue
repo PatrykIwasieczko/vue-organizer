@@ -43,7 +43,7 @@
                   </v-flex>
 
                   <v-flex xs12 md3>
-                    <v-btn flat class="success">Submit</v-btn>
+                    <v-btn text class="success">Submit</v-btn>
                   </v-flex>
                 </v-layout>
               </v-card>
@@ -61,7 +61,7 @@
                   </v-flex>
 
                   <v-flex xs12 md3>
-                    <v-btn flat class="success" @click="updateProfile">Submit</v-btn>
+                    <v-btn text class="success" @click="updateProfile">Submit</v-btn>
                   </v-flex>
                 </v-layout>
               </v-card>

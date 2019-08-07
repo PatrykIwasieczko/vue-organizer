@@ -14,7 +14,7 @@
                 type="password"
               ></v-text-field>
             </v-form>
-            <v-btn flat class="success mx-0 my-4" @click="login">Login</v-btn>
+            <v-btn text class="success mx-0 my-4" @click="login">Login</v-btn>
             <p>
               You don't have an account? You can
               <router-link to="/signup">create one</router-link>

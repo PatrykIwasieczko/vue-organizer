@@ -1,6 +1,6 @@
 <template>
   <v-dialog max-width="600px" v-model="dialog">
-    <v-btn flat slot="activator" class="success">Add new project</v-btn>
+    <v-btn text slot="activator" class="success">Add new project</v-btn>
     <v-card>
       <v-card-title>
         <h2>Add a new project</h2>

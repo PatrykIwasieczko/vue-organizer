@@ -17,7 +17,7 @@
               <div class="grey--text">{{ person.email }}</div>
             </v-card-text>
             <v-card-actions>
-              <v-btn flat color="grey">
+              <v-btn text color="grey">
                 <v-icon small left>message</v-icon>
                 <span>Message</span>
               </v-btn>
