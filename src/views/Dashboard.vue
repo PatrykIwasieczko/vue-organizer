@@ -3,7 +3,7 @@
     <h1 class="subheading grey--text">Dashboard</h1>
     <v-container class="my-5">
       <v-layout row class="mb-3">
-        <v-flex xs12>
+        <v-flex xs12 md6 class="mt-3">
           <v-tooltip top>
             <template v-slot:activator="{ on }">
               <v-btn small text color="grey" @click="sortBy('title')" v-on="on">
@@ -45,7 +45,7 @@
             <span>Sort projects by status</span>
           </v-tooltip>
         </v-flex>
-        <v-flex md3 xs12>
+        <v-flex xs12 offset-md2 md3>
           <v-text-field prepend-icon="search" v-model="search" label="Search projects"></v-text-field>
         </v-flex>
       </v-layout>
