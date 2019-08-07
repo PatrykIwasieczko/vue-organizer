@@ -141,7 +141,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .project.ongoing {
   border-left: 4px solid #3cd1c2;
 }
