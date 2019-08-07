@@ -1,10 +1,10 @@
 import Vue from "vue";
-import "./plugins/vuetify";
 import App from "./App.vue";
 import router from "./router";
 import VueFirestore from "vue-firestore";
 import { fb } from "./firebase";
 require("firebase/firestore");
+import vuetify from "./plugins/vuetify";
 
 import Swal from "sweetalert2";
 
@@ -34,6 +34,7 @@ fb.auth().onAuthStateChanged(() => {
     if (!app) {
         app = new Vue({
             router,
+            vuetify,
             render: h => h(App)
         }).$mount("#app");
     }
