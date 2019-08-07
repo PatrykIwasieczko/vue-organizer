@@ -9,17 +9,15 @@
         <v-flex xs12 sm5 md5>
           <img src="/images/completed.svg" width="300" />
         </v-flex>
-        <v-expansion-panel>
-          <v-expansion-panel-content v-for="project in myProjects" :key="project.title">
-            <div slot="header">{{ project.title }}</div>
-            <v-card>
-              <v-card-text class="grey--text">
-                <div class="font-weight-bold">Due date: {{ project.due }}</div>
-                <div>{{ project.content }}</div>
-              </v-card-text>
-            </v-card>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
+        <v-expansion-panels>
+          <v-expansion-panel v-for="(project, index) in myProjects" :key="index">
+            <v-expansion-panel-header>{{ project.title }}</v-expansion-panel-header>
+            <v-expansion-panel-content class="grey--text">
+              <div class="font-weight-bold">Due date: {{ project.due }}</div>
+              <div>{{ project.content }}</div>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
       </v-layout>
     </v-container>
   </div>
