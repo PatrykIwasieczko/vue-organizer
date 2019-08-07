@@ -29,20 +29,22 @@
         ></v-select>
 
         <v-menu>
-          <v-text-field
-            :value="formattedDate"
-            slot="activator"
-            clearable
-            label="Due date"
-            prepend-icon="date_range"
-            :rules="inputRules"
-          ></v-text-field>
+          <template v-slot:activator="{ on }">
+            <v-text-field
+              :value="formattedDate"
+              v-on="on"
+              clearable
+              label="Due date"
+              prepend-icon="date_range"
+              :rules="inputRules"
+            ></v-text-field>
+          </template>
           <v-date-picker v-model="project.due"></v-date-picker>
         </v-menu>
 
         <v-spacer></v-spacer>
 
-        <v-btn flat class="success mx-0 mt-3" @click="submit" :loading="loading">Add project</v-btn>
+        <v-btn text class="success mx-0 mt-3" @click="submit" :loading="loading">Add project</v-btn>
       </v-form>
     </v-card>
   </v-dialog>
@@ -58,10 +60,10 @@ export default {
         name: null
       },
       project: {
-        chosenStatus: null,
-        title: null,
-        content: null,
-        due: null,
+        chosenStatus: "",
+        title: "",
+        content: "",
+        due: "",
         createdAt: Date.now()
       },
       status: ["to-do", "urgent", "ongoing", "done"],
@@ -101,11 +103,11 @@ export default {
     },
     reset() {
       this.project = {
-        chosenStatus: null,
-        title: null,
-        content: null,
-        due: null,
-        createdAt: null
+        chosenStatus: "",
+        title: "",
+        content: "",
+        due: "",
+        createdAt: ""
       };
     }
   },
