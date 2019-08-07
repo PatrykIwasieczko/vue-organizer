@@ -16,10 +16,11 @@
             <span>Menu</span>
           </v-btn>
         </template>
+
         <v-list>
-          <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
-            <v-list-tile-title>{{ link.text }}</v-list-tile-title>
-          </v-list-tile>
+          <v-list-item v-for="(link, index) in links" :key="index" @click router :to="link.route">
+            <v-list-item-title>{{ link.text }}</v-list-item-title>
+          </v-list-item>
         </v-list>
       </v-menu>
 
