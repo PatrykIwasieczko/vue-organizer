@@ -71,7 +71,7 @@
               <v-card flat>
                 <v-layout justify-center row wrap class="pt-5">
                   <v-flex xs6 md2>
-                    <v-btn class="info">Reset password</v-btn>
+                    <v-btn class="info" @click="resetPassword">Reset password</v-btn>
                   </v-flex>
                   <v-flex xs6 md2>
                     <v-btn class="error">Delete account</v-btn>
