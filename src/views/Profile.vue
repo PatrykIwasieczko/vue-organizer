@@ -140,21 +140,28 @@ export default {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!"
-      }).then(result => {
-        if (result.value) {
-          user
-            .delete()
-            .then(() => {
-              this.$router.replace("login");
-            })
-            .then(() => {
-              Toast.fire({
-                type: "success",
-                title: "Account successfully deleted."
+      })
+        .then(result => {
+          if (result.value) {
+            user
+              .delete()
+              .then(() => {
+                this.$router.replace("login");
+              })
+              .then(() => {
+                Toast.fire({
+                  type: "success",
+                  title: "Account successfully deleted."
+                });
               });
-            });
-        }
-      });
+          }
+        })
+        .catch(error => {
+          Toast.fire({
+            type: "error",
+            title: error + ""
+          });
+        });
     }
   }
 };
