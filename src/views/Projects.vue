@@ -47,15 +47,22 @@ export default {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!"
-      }).then(result => {
-        if (result.value) {
-          this.$firestore.projects.doc(doc.id).delete();
+      })
+        .then(result => {
+          if (result.value) {
+            this.$firestore.projects.doc(doc.id).delete();
+            Toast.fire({
+              type: "success",
+              title: "Project deleted  successfully"
+            });
+          }
+        })
+        .catch(error => {
           Toast.fire({
-            type: "success",
-            title: "Project deleted  successfully"
+            type: "error",
+            title: error + ""
           });
-        }
-      });
+        });
     }
   },
   firestore() {
