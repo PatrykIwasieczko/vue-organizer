@@ -74,7 +74,7 @@
                     <v-btn class="info" @click="resetPassword">Reset password</v-btn>
                   </v-flex>
                   <v-flex xs6 md2>
-                    <v-btn class="error">Delete account</v-btn>
+                    <v-btn class="error" @click="deleteProfile">Delete account</v-btn>
                   </v-flex>
                 </v-layout>
               </v-card>
@@ -128,6 +128,33 @@ export default {
             title: error + ""
           });
         });
+    },
+    deleteProfile() {
+      const user = fb.auth().currentUser;
+
+      Swal.fire({
+        title: "Are you sure you want to delete your account?",
+        text: "You won't be able to revert this!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(result => {
+        if (result.value) {
+          user
+            .delete()
+            .then(() => {
+              this.$router.replace("login");
+            })
+            .then(() => {
+              Toast.fire({
+                type: "success",
+                title: "Account successfully deleted."
+              });
+            });
+        }
+      });
     }
   }
 };
