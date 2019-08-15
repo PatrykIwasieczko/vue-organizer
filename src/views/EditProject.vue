@@ -27,6 +27,12 @@
             </template>
             <v-date-picker v-model="project.due"></v-date-picker>
           </v-menu>
+          <v-btn
+            text
+            class="success mx-0 mt-3"
+            @click="updateProject"
+            :loading="loading"
+          >Edit project</v-btn>
         </v-card-text>
       </v-card>
     </v-container>
@@ -44,10 +50,8 @@ export default {
       project: {
         content: null,
         due: null,
-        person: null,
         status: null,
-        title: null,
-        chosenStatus: ""
+        title: null
       },
       profile: {
         name: null
@@ -55,7 +59,8 @@ export default {
       inputRules: [
         v => !!v || "This field is required",
         v => v.length >= 5 || "Minimum length is 5 characters"
-      ]
+      ],
+      loading: false
     };
   },
 
@@ -66,7 +71,17 @@ export default {
       project: db.collection("projects").doc(this.id)
     };
   },
-  methods: {},
+  methods: {
+    updateProject() {
+      this.$firestore.project.update(this.project).then(() => {
+        this.loading = false;
+        Toast.fire({
+          type: "success",
+          title: "Project updated"
+        });
+      });
+    }
+  },
   computed: {
     formattedDate() {
       return this.project.due ? format(this.project.due, "YYYY-MM-DD") : "";
