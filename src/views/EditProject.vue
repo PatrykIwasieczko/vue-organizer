@@ -1,15 +1,15 @@
 <template>
   <div class="projects">
-    <h1 class="subheading grey--text">Project details</h1>
+    <h1 class="subheading grey--text">Edit project</h1>
     <v-container class="my-5">
       <v-card>
         <v-card-text>
           <v-text-field v-model="project.title" prepend-icon="folder" label="Project title"></v-text-field>
 
           <v-select
-            :items="status"
+            :items="statuses"
             required
-            v-model="project.chosenStatus"
+            v-model="project.status"
             prepend-icon="notifications"
             label="Status"
           ></v-select>
@@ -40,7 +40,7 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      status: ["to-do", "urgent", "ongoing", "done"],
+      statuses: ["to-do", "urgent", "ongoing", "done"],
       project: {
         content: null,
         due: null,
