@@ -112,6 +112,31 @@ export default {
         title: "Profile updated"
       });
     },
+    uploadImage(e) {
+      if (e.target.files[0]) {
+        let file = e.target.files[0];
+
+        var storageRef = fb.storage().ref("profiles/" + file.name);
+
+        let uploadTask = storageRef.put(file);
+
+        uploadTask.on(
+          "state_changed",
+          snapshot => {},
+          error => {
+            // Handle unsuccessful uploads
+          },
+          () => {
+            // Handle successful uploads on complete
+            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+
+            uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+              this.profile.images.push(downloadURL);
+            });
+          }
+        );
+      }
+    },
     resetPassword() {
       const auth = fb.auth();
       auth

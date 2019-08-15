@@ -49,6 +49,14 @@ const router = new Router({
             }
         },
         {
+            path: "/expired",
+            name: "expired",
+            component: Expired,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
             path: "/project/:id",
             name: "project",
             component: ProjectDetails,

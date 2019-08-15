@@ -86,7 +86,7 @@ export default {
           person: this.profile.name,
           status: this.project.chosenStatus,
           createdAt: this.project.createdAt,
-          contributors: [this.profile.name]
+          contributors: ""
         };
         db.collection("projects")
           .add(project)
