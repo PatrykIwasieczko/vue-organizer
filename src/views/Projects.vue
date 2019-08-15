@@ -12,7 +12,10 @@
                 <v-list-item-subtitle>{{ project.content }}</v-list-item-subtitle>
               </v-list-item-content>
               <v-list-item-action>
-                <v-icon>edit</v-icon>
+                <router-link v-bind:to="'/editProject/' + project.id">
+                  <v-icon>edit</v-icon>
+                </router-link>
+
                 <v-icon @click="deleteProject(project)">delete</v-icon>
               </v-list-item-action>
             </v-list-item>
@@ -26,9 +29,7 @@
 
 <script>
 import { db, fb } from "../firebase";
-import EditProject from "../components/EditProject";
 export default {
-  components: { EditProject },
   data() {
     return {
       projects: [],

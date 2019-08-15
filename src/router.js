@@ -5,6 +5,7 @@ import Projects from "./views/Projects.vue";
 import Completed from "./views/Completed.vue";
 import Expired from "./views/Expired.vue";
 import ProjectDetails from "./views/ProjectDetails.vue";
+import EditProject from "./views/EditProject.vue";
 import Team from "./views/Team.vue";
 import Login from "./views/Login.vue";
 import Signup from "./views/Signup.vue";
@@ -61,6 +62,14 @@ const router = new Router({
             path: "/project/:id",
             name: "project",
             component: ProjectDetails,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: "/editProject/:id",
+            name: "editProject",
+            component: EditProject,
             meta: {
                 requiresAuth: true
             }
