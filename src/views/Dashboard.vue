@@ -120,6 +120,9 @@ export default {
           return project.status !== "done";
         })
         .filter(project => {
+          return new Date(project.due) >= new Date();
+        })
+        .filter(project => {
           return project.title.toLowerCase().match(this.search.toLowerCase());
         });
     }
