@@ -77,7 +77,7 @@ export default {
           route: "/completed"
         },
         {
-          icon: "mdi-window-close",
+          icon: "clear",
           text: "Expired projects",
           route: "/expired"
         },

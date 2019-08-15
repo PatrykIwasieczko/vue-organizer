@@ -56,3 +56,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.v-list {
+  padding: 0;
+}
+</style>
