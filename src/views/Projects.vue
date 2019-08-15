@@ -12,7 +12,7 @@
                 <v-list-item-subtitle>{{ project.content }}</v-list-item-subtitle>
               </v-list-item-content>
               <v-list-item-action>
-                <EditProject />
+                <v-icon>edit</v-icon>
                 <v-icon @click="deleteProject(project)">delete</v-icon>
               </v-list-item-action>
             </v-list-item>

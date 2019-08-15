@@ -18,20 +18,22 @@
         ></v-select>
 
         <v-menu>
-          <v-text-field
-            :value="formattedDate"
-            slot="activator"
-            clearable
-            label="Due date"
-            prepend-icon="date_range"
-            :rules="inputRules"
-          ></v-text-field>
+          <template v-slot:activator="{ on }">
+            <v-text-field
+              :value="formattedDate"
+              v-on="on"
+              clearable
+              label="Due date"
+              prepend-icon="date_range"
+              :rules="inputRules"
+            ></v-text-field>
+          </template>
           <v-date-picker v-model="due"></v-date-picker>
         </v-menu>
 
         <v-spacer></v-spacer>
 
-        <v-btn flat class="success mx-0 mt-3" @click="submit" :loading="loading">Add project</v-btn>
+        <v-btn text class="success mx-0 mt-3" @click="submit" :loading="loading">Add project</v-btn>
       </v-form>
     </v-card>
   </v-dialog>
