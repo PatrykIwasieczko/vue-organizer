@@ -84,6 +84,12 @@ export default {
             type: "success",
             title: "Project updated"
           });
+        })
+        .catch(error => {
+          Toast.fire({
+            type: "error",
+            title: error + ""
+          });
         });
     }
   },
