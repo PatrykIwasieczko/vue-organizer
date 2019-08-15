@@ -73,13 +73,18 @@ export default {
   },
   methods: {
     updateProject() {
-      this.$firestore.project.update(this.project).then(() => {
-        this.loading = false;
-        Toast.fire({
-          type: "success",
-          title: "Project updated"
+      this.$firestore.project
+        .update(this.project)
+        .then(() => {
+          this.loading = false;
+        })
+        .then(() => {
+          this.$router.replace("/projects");
+          Toast.fire({
+            type: "success",
+            title: "Project updated"
+          });
         });
-      });
     }
   },
   computed: {
