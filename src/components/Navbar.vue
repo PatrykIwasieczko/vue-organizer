@@ -76,6 +76,11 @@ export default {
           text: "Completed projects",
           route: "/completed"
         },
+        {
+          icon: "expired",
+          text: "Expired projects",
+          route: "/expired"
+        },
         { icon: "group", text: "Team", route: "/team" },
         { icon: "person", text: "Profile", route: "/profile" }
       ]
