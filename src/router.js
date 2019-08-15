@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Dashboard from "./views/Dashboard.vue";
 import Projects from "./views/Projects.vue";
 import Completed from "./views/Completed.vue";
+import Expired from "./views/Expired.vue";
 import ProjectDetails from "./views/ProjectDetails.vue";
 import Team from "./views/Team.vue";
 import Login from "./views/Login.vue";
