@@ -8,7 +8,7 @@
           <v-card class="text-xs-center ma-3">
             <v-responsive class="pt-4">
               <v-avatar size="100" class="grey lighten-2">
-                <img :src="person.avatar" />
+                <img :src="person.photoURL" />
               </v-avatar>
             </v-responsive>
             <v-card-text>
