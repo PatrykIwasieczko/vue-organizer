@@ -6,7 +6,8 @@
           <v-card class="pa-5">
             <h3>Create a new account</h3>
             <v-form>
-              <v-text-field label="Full name" v-model="name"></v-text-field>
+              <v-text-field label="Name" v-model="firstName"></v-text-field>
+              <v-text-field label="Surname" v-model="surname"></v-text-field>
               <v-text-field label="Email" v-model="email"></v-text-field>
               <v-text-field
                 label="Password"
@@ -35,7 +36,9 @@ export default {
     return {
       email: "",
       password: "",
-      name: ""
+      firstName: "",
+      surname: "",
+      photoURL: ""
     };
   },
   methods: {
@@ -43,12 +46,20 @@ export default {
       fb.auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(cred => {
+          if (this.firstName[this.firstName.length - 1] === "a") {
+            this.photoURL =
+              "https://firebasestorage.googleapis.com/v0/b/vue-organizer.appspot.com/o/avatar-girl.png?alt=media&token=8d96f63e-f56c-4c16-8795-9be8501456c8";
+          } else {
+            this.photoURL =
+              "https://firebasestorage.googleapis.com/v0/b/vue-organizer.appspot.com/o/avatar-boy.png?alt=media&token=28bb6912-09c1-453a-9cc3-f7f144968778";
+          }
           return db
             .collection("profiles")
             .doc(cred.user.uid)
             .set({
-              name: this.name,
-              email: this.email
+              name: `${this.firstName} ${this.surname}`,
+              email: this.email,
+              photoURL: this.photoURL
             });
         })
         .then(() => {
@@ -67,7 +78,8 @@ export default {
           });
         });
     }
-  }
+  },
+  computed: {}
 };
 </script>
 <style>
