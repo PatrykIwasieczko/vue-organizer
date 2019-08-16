@@ -39,12 +39,12 @@
                   </v-flex>
 
                   <v-flex xs12 md3>
-                    <input type="file" @change="uploadImage" />
+                    <input type="file" @change="onFileSelected" />
                   </v-flex>
 
                   <v-flex xs12 md3>
                     <v-btn text class="success" @click="uploadImage">Upload Image</v-btn>
-                    <v-btn text class="success">Submit</v-btn>
+                    <v-btn text class="success" @click="updateMyProfile">Submit</v-btn>
                   </v-flex>
                 </v-layout>
               </v-card>
@@ -92,14 +92,11 @@ import { fb, db } from "../firebase";
 export default {
   data() {
     return {
-      user: {
-        photoURL: null
-      },
       profile: {
         name: null,
         phone: null,
         email: null,
-        images: []
+        photoURL: null
       },
       selectedFile: null
     };
@@ -118,13 +115,13 @@ export default {
         title: "Profile updated"
       });
     },
-    // onFileSelected(e) {
-    //  this.selectedFile = e.target.files[0];
-    //},
+    onFileSelected(e) {
+      this.selectedFile = e.target.files[0];
+    },
     uploadImage(e) {
-      if (e.target.files[0]) {
+      if (this.selectedFile) {
         var user = fb.auth().currentUser;
-        var file = e.target.files[0];
+        var file = this.selectedFile;
 
         var storageRef = fb
           .storage()
