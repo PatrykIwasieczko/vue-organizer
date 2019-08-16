@@ -39,10 +39,11 @@
                   </v-flex>
 
                   <v-flex xs12 md3>
-                    <v-file-input label="Profile picture" prepend-icon="camera_alt"></v-file-input>
+                    <input type="file" @change="uploadImage" />
                   </v-flex>
 
                   <v-flex xs12 md3>
+                    <v-btn text class="success" @click="uploadImage">Upload Image</v-btn>
                     <v-btn text class="success">Submit</v-btn>
                   </v-flex>
                 </v-layout>
@@ -61,7 +62,7 @@
                   </v-flex>
 
                   <v-flex xs12 md3>
-                    <v-btn text class="success" @click="updateProfile">Submit</v-btn>
+                    <v-btn text class="success" @click="updateMyProfile">Submit</v-btn>
                   </v-flex>
                 </v-layout>
               </v-card>
@@ -91,11 +92,16 @@ import { fb, db } from "../firebase";
 export default {
   data() {
     return {
+      user: {
+        photoURL: null
+      },
       profile: {
         name: null,
         phone: null,
-        email: null
-      }
+        email: null,
+        images: []
+      },
+      selectedFile: null
     };
   },
   firestore() {
@@ -105,36 +111,33 @@ export default {
     };
   },
   methods: {
-    updateProfile() {
+    updateMyProfile() {
       this.$firestore.profile.update(this.profile);
       Toast.fire({
         type: "success",
         title: "Profile updated"
       });
     },
+    // onFileSelected(e) {
+    //  this.selectedFile = e.target.files[0];
+    //},
     uploadImage(e) {
       if (e.target.files[0]) {
-        let file = e.target.files[0];
+        var user = fb.auth().currentUser;
+        var file = e.target.files[0];
 
-        var storageRef = fb.storage().ref("profiles/" + file.name);
+        var storageRef = fb
+          .storage()
+          .ref(user + "/profilePicture/" + file.name);
 
         let uploadTask = storageRef.put(file);
 
-        uploadTask.on(
-          "state_changed",
-          snapshot => {},
-          error => {
-            // Handle unsuccessful uploads
-          },
-          () => {
-            // Handle successful uploads on complete
-            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-
-            uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-              this.profile.images.push(downloadURL);
-            });
-          }
-        );
+        uploadTask.on("state_changed", () => {
+          uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+            this.profile.photoURL = downloadURL;
+            this.$firestore.profile.update(this.profile);
+          });
+        });
       }
     },
     resetPassword() {

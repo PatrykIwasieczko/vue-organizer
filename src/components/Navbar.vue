@@ -34,7 +34,7 @@
       <v-layout column align-center>
         <v-flex class="mt-5">
           <v-avatar size="100">
-            <img src="avatar-1.png" alt />
+            <img :src="profile.photoURL" alt />
           </v-avatar>
           <p class="white--text subheading mt-1">{{ profile.name }}</p>
         </v-flex>
@@ -65,7 +65,8 @@ export default {
   data() {
     return {
       profile: {
-        name: null
+        name: null,
+        photoURL: null
       },
       drawer: false,
       links: [
