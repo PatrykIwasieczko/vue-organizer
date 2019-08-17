@@ -42,8 +42,10 @@
                     <input type="file" @change="onFileSelected" />
                   </v-flex>
 
-                  <v-flex xs12 md3>
+                  <v-flex xs12 md1>
                     <v-btn text class="success" @click="uploadImage">Upload Image</v-btn>
+                  </v-flex>
+                  <v-flex xs12 md1>
                     <v-btn text class="success" @click="updateMyProfile">Submit</v-btn>
                   </v-flex>
                 </v-layout>
