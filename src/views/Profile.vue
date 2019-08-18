@@ -132,10 +132,18 @@ export default {
         let uploadTask = storageRef.put(file);
 
         uploadTask.on("state_changed", () => {
-          uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-            this.profile.photoURL = downloadURL;
-            this.$firestore.profile.update(this.profile);
-          });
+          uploadTask.snapshot.ref
+            .getDownloadURL()
+            .then(downloadURL => {
+              this.profile.photoURL = downloadURL;
+              this.$firestore.profile.update(this.profile);
+            })
+            .then(() => {
+              Toast.fire({
+                type: "success",
+                title: "Profile photo changed!"
+              });
+            });
         });
       }
     },
