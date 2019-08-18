@@ -62,6 +62,12 @@ export default {
               photoURL: this.photoURL
             });
         })
+        .catch(error => {
+          Toast.fire({
+            type: "error",
+            title: error + ""
+          });
+        })
         .then(() => {
           this.$router.replace("home");
         })
@@ -69,12 +75,6 @@ export default {
           Toast.fire({
             type: "success",
             title: "You have successfully created an account."
-          });
-        })
-        .catch(error => {
-          Toast.fire({
-            type: "error",
-            title: error + ""
           });
         });
     }
