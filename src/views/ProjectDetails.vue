@@ -9,8 +9,6 @@
           <div>Status: {{ project.status }}</div>
           <div>Due date: {{ project.due }}</div>
           <div class="mt-3">{{ project.content }}</div>
-          <div class="mt-3">Doing: {{ project.contributors }}</div>
-          <v-btn dark color="blue" @click="contribute">Contribute</v-btn>
         </v-card-text>
       </v-card>
     </v-container>
@@ -28,8 +26,7 @@ export default {
         due: null,
         person: null,
         status: null,
-        title: null,
-        contributors: []
+        title: null
       },
       profile: {
         name: null
