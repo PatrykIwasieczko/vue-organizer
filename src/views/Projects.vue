@@ -8,7 +8,7 @@
             <v-list-item :key="index" ripple @click :class="`project ${project.status}`">
               <v-list-item-content>
                 <v-list-item-title>{{ project.title }}</v-list-item-title>
-                <v-list-item-subtitle class="text--primary">Doing: {{ project.contributors }}</v-list-item-subtitle>
+                <v-list-item-subtitle class="text--primary">Due date: {{ project.due }}</v-list-item-subtitle>
                 <v-list-item-subtitle>{{ project.content }}</v-list-item-subtitle>
               </v-list-item-content>
               <v-list-item-action>
