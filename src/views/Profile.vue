@@ -138,6 +138,12 @@ export default {
               this.profile.photoURL = downloadURL;
               this.$firestore.profile.update(this.profile);
             })
+            .catch(error => {
+              Toast.fire({
+                type: "error",
+                title: error + ""
+              });
+            })
             .then(() => {
               Toast.fire({
                 type: "success",
