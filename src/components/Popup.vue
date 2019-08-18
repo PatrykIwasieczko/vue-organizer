@@ -63,8 +63,7 @@ export default {
         chosenStatus: "",
         title: "",
         content: "",
-        due: "",
-        createdAt: Date.now()
+        due: ""
       },
       status: ["to-do", "urgent", "ongoing", "done"],
       inputRules: [
@@ -84,9 +83,7 @@ export default {
           content: this.project.content,
           due: format(this.project.due, "YYYY-MM-DD"),
           person: this.profile.name,
-          status: this.project.chosenStatus,
-          createdAt: this.project.createdAt,
-          contributors: ""
+          status: this.project.chosenStatus
         };
         db.collection("projects")
           .add(project)
@@ -106,8 +103,7 @@ export default {
         chosenStatus: "",
         title: "",
         content: "",
-        due: "",
-        createdAt: ""
+        due: ""
       };
     }
   },
